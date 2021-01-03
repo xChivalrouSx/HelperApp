@@ -37,13 +37,13 @@ namespace HelperApp
             this.Size = new Size(weatherControl.Width, weatherControl.Height);
 
             Settings settings = SettingsHelper.GetSettings();
-            SetLocation(settings.WeatherStartScreen);
+            SetLocation(settings.WeatherStartScreen, settings.WeatherLocation);
             
             this.StartPosition = FormStartPosition.Manual;
             this.TopMost = settings.IsWeatherAlwaysTop;
         }
 
-        public void SetLocation(int screenIndex) 
+        public void SetLocation(int screenIndex, int locationIndex) 
         {
             List<Screen> orderedScreen = Screen.AllScreens.OrderBy(x => x.Bounds.X).ToList();
             if (orderedScreen.Count <= screenIndex)
@@ -53,8 +53,27 @@ namespace HelperApp
             }
             Screen appScreen = orderedScreen[screenIndex];
 
-            int xPosition = appScreen.Bounds.X + appScreen.WorkingArea.Width - this.Width;
+            int xPosition = 0;
             int yPosition = 0;
+            switch (locationIndex)
+            {
+                case 0:
+                    xPosition = appScreen.Bounds.X;
+                    yPosition = 0;
+                    break;
+                case 1:
+                    xPosition = appScreen.Bounds.X + appScreen.WorkingArea.Width - this.Width;
+                    yPosition = 0;
+                    break;
+                case 2:
+                    xPosition = appScreen.Bounds.X + appScreen.WorkingArea.Width - this.Width;
+                    yPosition = appScreen.Bounds.Y + appScreen.WorkingArea.Height - this.Height;
+                    break;
+                case 3:
+                    xPosition = appScreen.Bounds.X;
+                    yPosition = appScreen.Bounds.Y + appScreen.WorkingArea.Height - this.Height;
+                    break;
+            }
             this.Location = new Point(xPosition, yPosition);
         }
 

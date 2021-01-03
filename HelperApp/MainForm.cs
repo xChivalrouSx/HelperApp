@@ -30,7 +30,8 @@ namespace HelperApp
                 {
                     WeatherStartScreen = 0,
                     IsWeatherAlwaysTop = true,
-                    ShowWeather = true
+                    ShowWeather = true,
+                    WeatherLocation = 2
                 };
 
                 File.Create(ApplicationConstants.SETTINGS_FILE).Close();

@@ -9,5 +9,7 @@ namespace HelperApp.Data
         public Boolean IsWeatherAlwaysTop { get; set; }
 
         public Boolean ShowWeather { get; set; }
+
+        public Int32 WeatherLocation { get; set; }
     }
 }

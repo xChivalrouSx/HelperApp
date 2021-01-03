@@ -26,6 +26,7 @@ namespace HelperApp
             if (selectedSetting.Equals("Weather"))
             {
                 CreateWeatherStartWindowSettings();
+                CreateWeatherLocationSettings();
                 CreateWeatherAlwaysTopSettings();
                 CreateWeatherShowSettings();
             }
@@ -49,6 +50,15 @@ namespace HelperApp
             cBoxWeatherScreen.SelectedValueChanged += cBoxScreen_SelectedValueChanged;
         }
 
+        private void CreateWeatherLocationSettings()
+        {
+            cBoxWeatherLocation.SelectedValueChanged -= cBoxLocation_SelectedValueChanged;
+
+            cBoxWeatherLocation.SelectedIndex = settings.WeatherLocation;
+            
+            cBoxWeatherLocation.SelectedValueChanged += cBoxLocation_SelectedValueChanged;
+        }
+
         private void CreateWeatherAlwaysTopSettings()
         {
             checkBoxWeatherAlwaysTop.CheckedChanged -= checkWeatherAlwaysTop_CheckedChanged;
@@ -70,11 +80,13 @@ namespace HelperApp
         private void cBoxScreen_SelectedValueChanged(object sender, EventArgs e)
         {
             SettingsHelper.SetSettings("WeatherStartScreen", cBoxWeatherScreen.SelectedIndex);
-            WeatherForm weatherForm = MainForm.GetForm<WeatherForm>();
-            if (weatherForm != null)
-            {
-                weatherForm.SetLocation(cBoxWeatherScreen.SelectedIndex);
-            }
+            SetFormLocation();
+        }
+
+        private void cBoxLocation_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SettingsHelper.SetSettings("WeatherLocation", cBoxWeatherLocation.SelectedIndex);
+            SetFormLocation();
         }
 
         private void checkWeatherAlwaysTop_CheckedChanged(object sender, EventArgs e)
@@ -105,7 +117,17 @@ namespace HelperApp
             }
         }
 
+        private void SetFormLocation() 
+        {
+            WeatherForm weatherForm = MainForm.GetForm<WeatherForm>();
+            if (weatherForm != null)
+            {
+                weatherForm.SetLocation(cBoxWeatherScreen.SelectedIndex, cBoxWeatherLocation.SelectedIndex);
+            }
+        }
+
         #endregion [ - Weather Settings - ]
 
     }
+
 }
