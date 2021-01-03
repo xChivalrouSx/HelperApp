@@ -28,9 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WeatherForm));
+            this.pnlTop = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.Transparent;
+            this.pnlTop.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(504, 24);
+            this.pnlTop.TabIndex = 0;
+            this.pnlTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.weatherForm_MouseDown);
             // 
             // WeatherForm
             // 
@@ -38,6 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(504, 261);
+            this.Controls.Add(this.pnlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -49,9 +60,10 @@
 
         }
 
+
         #endregion
 
-        
+        private System.Windows.Forms.Panel pnlTop;
     }
 }
 
