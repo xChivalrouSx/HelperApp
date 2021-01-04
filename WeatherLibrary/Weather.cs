@@ -1,6 +1,5 @@
-﻿using WeatherLibrary.Constants;
-using WeatherLibrary.Controls;
-using WeatherLibrary.DTOs;
+﻿using System;
+using WeatherLibrary.Constants;
 
 namespace WeatherLibrary
 {
@@ -21,12 +20,6 @@ namespace WeatherLibrary
         public Weather(string apiKey, string country, string city) : this(apiKey, country, city, UnitsType.STANDARD) { }
 
         public Weather(string apiKey, string city) : this(apiKey, string.Empty, city, UnitsType.STANDARD) { }
-
-        public WeatherControl GetWeatherControl() 
-        {
-            WeatherResponse weatherResponse = WeatherHelper.GetCurrentWeatherAsync(this);
-            return new WeatherControl(weatherResponse);
-        }
 
     }
 }

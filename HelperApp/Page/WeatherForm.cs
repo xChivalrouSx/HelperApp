@@ -16,6 +16,7 @@ namespace HelperApp
     public partial class WeatherForm : Form
     {
         private Weather weather;
+        public WeatherControl WeatherControl { get; set; }
 
         public WeatherForm()
         {
@@ -25,18 +26,19 @@ namespace HelperApp
 
         private void Init()
         {
+            Settings settings = SettingsHelper.GetSettings();
+
             weather = new Weather(
                 ApplicationConstants.WEATHER_API_KEY, 
                 ApplicationConstants.DEFAULT_COUNTRY, 
                 ApplicationConstants.DEFAULT_CITY,
                 UnitsType.METRIC);
 
-            WeatherControl weatherControl = weather.GetWeatherControl();
-            this.Controls.Add(weatherControl);
-            pnlTop.BackColor = weatherControl.BackColor;
-            this.Size = new Size(weatherControl.Width, weatherControl.Height);
+            WeatherControl = new WeatherControl(weather, settings.WeatherRefreshRate);
+            this.Controls.Add(WeatherControl);
+            pnlTop.BackColor = WeatherControl.BackColor;
+            this.Size = new Size(WeatherControl.Width, WeatherControl.Height);
 
-            Settings settings = SettingsHelper.GetSettings();
             SetLocation(settings.WeatherStartScreen, settings.WeatherLocation);
             
             this.StartPosition = FormStartPosition.Manual;
@@ -76,7 +78,6 @@ namespace HelperApp
             }
             this.Location = new Point(xPosition, yPosition);
         }
-
 
         #region [ - Form Move Without Border - ]
 

@@ -39,6 +39,8 @@ namespace HelperApp
             this.lblWeatherScreen = new System.Windows.Forms.Label();
             this.cBoxWeatherLocation = new System.Windows.Forms.ComboBox();
             this.lblWeatherLocation = new System.Windows.Forms.Label();
+            this.cBoxWeatherRefresh = new System.Windows.Forms.ComboBox();
+            this.lblWeatherRefresh = new System.Windows.Forms.Label();
             this.pnlWeather.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +64,8 @@ namespace HelperApp
             // 
             this.pnlWeather.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pnlWeather.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlWeather.Controls.Add(this.cBoxWeatherRefresh);
+            this.pnlWeather.Controls.Add(this.lblWeatherRefresh);
             this.pnlWeather.Controls.Add(this.cBoxWeatherLocation);
             this.pnlWeather.Controls.Add(this.lblWeatherLocation);
             this.pnlWeather.Controls.Add(this.lblWeatherShow);
@@ -79,7 +83,7 @@ namespace HelperApp
             // lblWeatherShow
             // 
             this.lblWeatherShow.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWeatherShow.Location = new System.Drawing.Point(10, 139);
+            this.lblWeatherShow.Location = new System.Drawing.Point(10, 182);
             this.lblWeatherShow.Name = "lblWeatherShow";
             this.lblWeatherShow.Size = new System.Drawing.Size(200, 23);
             this.lblWeatherShow.TabIndex = 5;
@@ -90,7 +94,7 @@ namespace HelperApp
             // 
             this.checkBoxWeatherShow.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxWeatherShow.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxWeatherShow.Location = new System.Drawing.Point(209, 139);
+            this.checkBoxWeatherShow.Location = new System.Drawing.Point(209, 182);
             this.checkBoxWeatherShow.Name = "checkBoxWeatherShow";
             this.checkBoxWeatherShow.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxWeatherShow.Size = new System.Drawing.Size(15, 23);
@@ -100,7 +104,7 @@ namespace HelperApp
             // lblWeatherAlwaysTop
             // 
             this.lblWeatherAlwaysTop.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWeatherAlwaysTop.Location = new System.Drawing.Point(10, 96);
+            this.lblWeatherAlwaysTop.Location = new System.Drawing.Point(10, 139);
             this.lblWeatherAlwaysTop.Name = "lblWeatherAlwaysTop";
             this.lblWeatherAlwaysTop.Size = new System.Drawing.Size(200, 23);
             this.lblWeatherAlwaysTop.TabIndex = 3;
@@ -111,7 +115,7 @@ namespace HelperApp
             // 
             this.checkBoxWeatherAlwaysTop.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxWeatherAlwaysTop.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxWeatherAlwaysTop.Location = new System.Drawing.Point(209, 96);
+            this.checkBoxWeatherAlwaysTop.Location = new System.Drawing.Point(209, 139);
             this.checkBoxWeatherAlwaysTop.Name = "checkBoxWeatherAlwaysTop";
             this.checkBoxWeatherAlwaysTop.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxWeatherAlwaysTop.Size = new System.Drawing.Size(15, 23);
@@ -165,6 +169,32 @@ namespace HelperApp
             this.lblWeatherLocation.Text = "Window Location:";
             this.lblWeatherLocation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // cBoxWeatherRefresh
+            // 
+            this.cBoxWeatherRefresh.BackColor = System.Drawing.SystemColors.Menu;
+            this.cBoxWeatherRefresh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxWeatherRefresh.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBoxWeatherRefresh.FormattingEnabled = true;
+            this.cBoxWeatherRefresh.Items.AddRange(new object[] {
+            "15",
+            "30",
+            "45",
+            "60"});
+            this.cBoxWeatherRefresh.Location = new System.Drawing.Point(210, 96);
+            this.cBoxWeatherRefresh.Name = "cBoxWeatherRefresh";
+            this.cBoxWeatherRefresh.Size = new System.Drawing.Size(180, 23);
+            this.cBoxWeatherRefresh.TabIndex = 9;
+            // 
+            // lblWeatherRefresh
+            // 
+            this.lblWeatherRefresh.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWeatherRefresh.Location = new System.Drawing.Point(10, 96);
+            this.lblWeatherRefresh.Name = "lblWeatherRefresh";
+            this.lblWeatherRefresh.Size = new System.Drawing.Size(200, 23);
+            this.lblWeatherRefresh.TabIndex = 8;
+            this.lblWeatherRefresh.Text = "Refresh Rate (Minute):";
+            this.lblWeatherRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,5 +223,7 @@ namespace HelperApp
         private System.Windows.Forms.CheckBox checkBoxWeatherShow;
         private System.Windows.Forms.ComboBox cBoxWeatherLocation;
         private System.Windows.Forms.Label lblWeatherLocation;
+        private System.Windows.Forms.ComboBox cBoxWeatherRefresh;
+        private System.Windows.Forms.Label lblWeatherRefresh;
     }
 }

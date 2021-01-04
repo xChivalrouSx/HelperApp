@@ -29,9 +29,10 @@ namespace HelperApp
                 Settings settings = new Settings()
                 {
                     WeatherStartScreen = 0,
+                    WeatherLocation = 2,
                     IsWeatherAlwaysTop = true,
                     ShowWeather = true,
-                    WeatherLocation = 2
+                    WeatherRefreshRate = 15
                 };
 
                 File.Create(ApplicationConstants.SETTINGS_FILE).Close();
@@ -45,7 +46,7 @@ namespace HelperApp
 
             if (settings.ShowWeather) 
             {
-                new WeatherForm().Show();
+                CheckAndOpenForm<WeatherForm>(new WeatherForm());
             }
         }
 
